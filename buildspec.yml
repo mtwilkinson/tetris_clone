@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 22
+
+    commands:
+      #install npm
+      - npm install
+
+  build:
+    commands:
+      # run build command
+      - npm run build
+
+artifacts:
+  # include the files required to run application
+  files:
+    - dist/**/*
+    - appspec.yml
+    - scripts/**/*
+    - .htaccess
