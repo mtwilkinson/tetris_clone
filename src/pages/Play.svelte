@@ -31,6 +31,9 @@
     setTimeout(test, 1000)
     function test() {
         grid[12][6] = 1
+        grid[5][0] = 1
+        grid[17][8] = 1
+        grid[2][3] = 1
         console.log('here')
     }
 
