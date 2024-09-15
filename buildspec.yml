@@ -20,3 +20,4 @@ artifacts:
     - dist/**/*
     - appspec.yml
     - scripts/**/*
+    - .htaccess
