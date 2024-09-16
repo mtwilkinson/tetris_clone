@@ -40,9 +40,31 @@
         context?.clearRect(0, 0, 2000, 1000);
         for (let i = 0; i < 20; i++) {
             for (let j = 0; j < 10; j++) {
-                if (grid[i][j] !== 0) {
-                    if (context) {
-                        context.fillStyle = "#00FF00";
+                if (context) {
+                    let color: number = grid[i][j]
+                    if (color > 10) {
+                        color -= 10;
+                    }
+                    if (color === 1) {
+                        context.fillStyle = "#dddd00";
+                        context.fillRect(100 * j, 100 * i, 100, 100)
+                    } else if (color === 2) {
+                        context.fillStyle = "#9a00cd";
+                        context.fillRect(100 * j, 100 * i, 100, 100)
+                    } else if(color === 3) {
+                        context.fillStyle = "#00cdcd";
+                        context.fillRect(100 * j, 100 * i, 100, 100)
+                    } else if(color === 4) {
+                        context.fillStyle = "#cd0000";
+                        context.fillRect(100 * j, 100 * i, 100, 100)
+                    } else if(color === 5) {
+                        context.fillStyle = "#00cd00";
+                        context.fillRect(100 * j, 100 * i, 100, 100)
+                    } else if(color === 6) {
+                        context.fillStyle = "#cd6600";
+                        context.fillRect(100 * j, 100 * i, 100, 100)
+                    } else if(color === 7) {
+                        context.fillStyle = "#0000cd";
                         context.fillRect(100 * j, 100 * i, 100, 100)
                     }
                 }
