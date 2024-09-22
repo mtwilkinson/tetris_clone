@@ -2,4 +2,5 @@
 
 yum update -y
 
-rm -rf /var/www/html/*
+rm -rf /home/ec2-user/tetris_clone/dist
+rm -rf /home/ec2-user/tetris_clone/dist-backend

@@ -19,5 +19,3 @@ artifacts:
   files:
     - dist/**/*
     - backend-dist/**/*
-    - appspec.yml
-    - scripts/**/*
