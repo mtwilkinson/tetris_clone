@@ -37,7 +37,7 @@
 
     function drawPieces(grid: number[][]){
         console.log(grid)
-        context?.clearRect(0, 0, 2000, 1000);
+        context?.clearRect(0, 0, 1000, 2000);
         for (let i = 0; i < 20; i++) {
             for (let j = 0; j < 10; j++) {
                 if (context) {
