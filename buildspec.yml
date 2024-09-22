@@ -20,3 +20,4 @@ artifacts:
     - dist/**/*
     - backend-dist/**/*
     - scripts/**/*
+    - appspec.yml
