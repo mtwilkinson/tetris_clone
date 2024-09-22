@@ -3,12 +3,10 @@
 cd /home/ec2-user/tetris_clone_deploy
 
 rm -rf /home/ec2-user/tetris_clone/dist
-rm -rf /home/ec2-user/tetris_clone/dist-backend
+rm -rf /home/ec2-user/tetris_clone/backend-dist
 
 cp -arp dist /home/ec2-user/tetris_clone/
-cp -arp dist-backend /home/ec2-user/tetris_clone/
-
-ls -la
+cp -arp backend-dist /home/ec2-user/tetris_clone/
 
 sudo systemctl restart myapp.service
 
