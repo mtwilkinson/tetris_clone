@@ -7,17 +7,17 @@ phases:
 
     commands:
       #install npm
-      - npm install
+      - yarn install
 
   build:
     commands:
       # run build command
-      - npm run build
+      - yarn run build
 
 artifacts:
   # include the files required to run application
   files:
     - dist/**/*
+    - backend-dist/**/*
     - appspec.yml
     - scripts/**/*
-    - .htaccess

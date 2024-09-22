@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cd /var/www/html
+cd /home/ec2-user/tetris_clone
 
 ls -la
 
-cp -arp dist/. . && rm -rf dist
+sudo systemctl restart myapp.service
 
-service httpd restart
+sudo systemctl restart myapp-backend.service
