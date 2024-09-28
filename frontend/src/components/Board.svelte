@@ -6,16 +6,9 @@
 
     let context: CanvasRenderingContext2D | null;
     let canvas: HTMLCanvasElement;
-    let width: number;
-    let height: number;
 
     onMount(() => {
         context = canvas.getContext('2d')
-        console.log(context);
-
-        width = canvas.width
-        height = canvas.height
-
         if (context) {drawPieces(grid)}
     });
 
@@ -36,7 +29,6 @@
     }
 
     function drawPieces(grid: number[][]){
-        console.log(grid)
         context?.clearRect(0, 0, 1000, 2000);
         for (let i = 0; i < 20; i++) {
             for (let j = 0; j < 10; j++) {

@@ -10,48 +10,107 @@
     grid[11][5] = 11;
     function  onKeyDown(e: KeyboardEvent) {
         console.log(e)
-
+        if (e.key === 'ArrowLeft') {
+            shiftLeft()
+        } else if (e.key === 'ArrowRight') {
+            shiftRight()
+        }
     }
 
-
-    setTimeout(drop, 1500)
-
-    console.log('test');
-
+    function checkSpace(x: number, y:number, g: number[][]) {
+        return !(x < 0 || x > 9 || y > 19 || g[y][x] !== 0);
+    }
     function drop() {
-        let temp = empty_board()
-        try {
-            for (let i = 19; i >= 0; i--) {
-                for (let j = 0; j < 10; j++) {
-
-                    if (grid[i][j] > 10) {
+        let temp = empty_board();
+        let d = true;
+        base:
+        for (let i = 19; i >= 0; i--) {
+            for (let j = 0; j < 10; j++) {
+                if (grid[i][j] > 10) {
+                    if (checkSpace(j, i+1, temp)) {
                         temp[i + 1][j] = grid[i][j];
                         temp[i][j] = 0;
                     } else {
-                        temp[i][j] = grid[i][j];
+                        d = false;
+                        spawnNewPiece();
+                        break base;
                     }
+                } else {
+                    temp[i][j] = grid[i][j];
                 }
             }
         }
-        catch (e) {
-            temp = empty_board()
-            temp[0][4] = 11;
-            temp[0][5] = 11;
-            temp[1][4] = 11;
-            temp[1][5] = 11;
+        if (d) {
+            grid = temp;
         }
-        grid = temp;
-        setTimeout(drop, 1000)
+        setTimeout(drop, 100)
     }
 
-    function copy_board(new_board: number[][]) {
-        for (let i = 0; i < 20; i++) {
-            for (let j = 0; j < 10; j++) {
-                grid[i][j] = new_board[i][j]
+    function shiftLeft() {
+        let temp = empty_board()
+        base:
+        for (let j = 0; j < 10; j++) {
+            for (let i = 19; i >= 0; i--) {
+                if (grid[i][j] > 10) {
+                    if (checkSpace(j-1, i, temp)) {
+                        temp[i][j - 1] = grid[i][j];
+                        temp[i][j] = 0;
+                    } else {
+                        temp = grid
+                        break base;
+                    }
+                } else {
+                    temp[i][j] = grid[i][j];
+                }
             }
         }
+        grid = temp;
     }
 
+    function shiftRight() {
+        let temp = empty_board()
+        base:
+        for (let j = 9; j >= 0; j--) {
+            for (let i = 19; i >= 0; i--) {
+                if (grid[i][j] > 10) {
+                    if (checkSpace(j+1, i, temp)) {
+                        temp[i][j + 1] = grid[i][j];
+                        temp[i][j] = 0;
+                    } else {
+                        temp = grid
+                        break base;
+                    }
+                } else {
+                    temp[i][j] = grid[i][j];
+                }
+            }
+        }
+        grid = temp;
+    }
+
+    function spawnNewPiece() {
+        let temp = empty_board()
+        for (let i = 19; i >= 0; i--) {
+            for (let j = 0; j < 10; j++) {
+                if (grid[i][j] > 10) {
+                    temp[i][j] = grid[i][j] - 10;
+                } else {
+                    temp[i][j] = grid[i][j];
+                }
+            }
+        }
+        if (!(checkSpace(4, 0, temp) && checkSpace(5, 0, temp) && checkSpace(4, 1, temp) && checkSpace(5, 1, temp))) {
+            temp = empty_board();
+        }
+        temp[0][4] = 11;
+        temp[0][5] = 11;
+        temp[1][4] = 11;
+        temp[1][5] = 11;
+        grid = temp;
+    }
+
+
+    setTimeout(drop, 1500);
 
 </script>
 
